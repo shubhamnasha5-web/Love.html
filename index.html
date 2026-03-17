@@ -1,126 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>For My Darling ❤️</title>
+<title>My Darling ❤️</title>
+
 <style>
 body {
     margin:0;
-    font-family: Arial;
-    background: black;
-    color: white;
+    background:black;
+    color:white;
     text-align:center;
+    font-family:sans-serif;
 }
 
-#lockScreen {
+#lock {
     height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
 }
 
-input {
+input,button {
     padding:10px;
     font-size:18px;
-    border:none;
-    border-radius:5px;
+    margin:5px;
+}
+
+#main {
+    display:none;
+}
+
+#slider img {
+    width:300px;
+    border-radius:15px;
 }
 
 button {
-    padding:10px 20px;
-    margin-top:10px;
-    font-size:18px;
     background:red;
     color:white;
     border:none;
     border-radius:5px;
 }
-
-#main {
-    display:none;
-    padding:20px;
-}
-
-img {
-    width:250px;
-    border-radius:15px;
-    margin:10px;
-}
-
-.fade {
-    animation: fade 1s infinite alternate;
-}
-
-@keyframes fade {
-    from {opacity:0.5;}
-    to {opacity:1;}
-}
 </style>
+
 </head>
 
 <body>
 
-<div id="lockScreen">
-    <h1>Enter Password ❤️</h1>
+<div id="lock">
+    <h2>Enter Password ❤️</h2>
     <input type="password" id="pass">
-    <button onclick="checkPass()">Open</button>
+    <button onclick="openSite()">Open</button>
 </div>
 
 <div id="main">
-    <h1>For My Darling Bhavna ❤️</h1>
 
-    <p>
-    Dear Bhavna (My WonderWoman ❤️),<br><br>
-    10 September 2018 se lekar aaj tak, tum meri life ka sabse beautiful part ho.  
-    Us din jab humne first time baat start ki thi, mujhe nahi pata tha ki ek din tum meri itni important ban jaogi.  
-    <br><br>
-    Tum sirf meri girlfriend nahi ho, tum meri best friend, meri happiness aur meri strength ho.  
-    Jab bhi main tumse baat karta hu, sab tension khatam ho jata hai.  
-    <br><br>
-    Darling, tumhari smile meri weakness hai 😍  
-    Aur tumhara attitude... bilkul WonderWoman jaisa powerful hai 💪❤️  
-    <br><br>
-    I love you more than anything in this world ❤️
-    </p>
+<h1>My Darling Bhavna ❤️</h1>
 
-    <h2>Our Memories 📸</h2>
-    <div id="photos"></div>
+<p>
+Dear WonderWoman ❤️<br><br>
+10 Sept 2018 se tu meri life ka best part hai...  
+Tu meri smile, meri happiness sab kuch hai 💕  
+</p>
 
-    <h2>Reasons Why I Love You ❤️</h2>
-    <p>
-    1. Tumhari smile 😍<br>
-    2. Tumhara caring nature ❤️<br>
-    3. Tumhara attitude 😎<br>
-    4. Tum mujhe samajhti ho 💕<br>
-    5. Tum meri life better banati ho ✨<br>
-    6. Tum meri strength ho 💪<br>
-    7. Tum meri best friend ho 👩‍❤️‍👨<br>
-    8. Tum meri Darling ho ❤️
-    </p>
+<!-- 🎵 MUSIC -->
+<audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
 
-    <h1 class="fade">I LOVE YOU FOREVER ❤️</h1>
+<button onclick="playMusic()">🎵 Play Music</button>
+
+<h2>Our Memories ❤️</h2>
+
+<div id="slider">
+    <img id="slide" src="photo1.jpg">
+</div>
+
+<h1>I LOVE YOU ❤️</h1>
+
 </div>
 
 <script>
-function checkPass() {
-    var p = document.getElementById("pass").value;
-    if(p === "mydarling") {
-        document.getElementById("lockScreen").style.display="none";
+
+function openSite(){
+    let p = document.getElementById("pass").value;
+    if(p==="mydarling"){
+        document.getElementById("lock").style.display="none";
         document.getElementById("main").style.display="block";
-        loadPhotos();
+        startSlide();
     } else {
-        alert("Wrong Password 😢");
+        alert("Wrong Password");
     }
 }
 
-function loadPhotos() {
-    let div = document.getElementById("photos");
-    for(let i=1;i<=8;i++){
-        let img = document.createElement("img");
-        img.src = "photo"+i+".jpg";
-        div.appendChild(img);
-    }
+// 🎵 music
+function playMusic(){
+    document.getElementById("music").play();
 }
+
+// 📸 slideshow
+let i = 1;
+
+function startSlide(){
+    setInterval(()=>{
+        i++;
+        if(i>8) i=1;
+        document.getElementById("slide").src="photo"+i+".jpg";
+    },2000);
+}
+
 </script>
 
 </body>
