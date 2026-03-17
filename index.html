@@ -10,35 +10,74 @@
 <style>
 body {
   margin:0;
-  background: linear-gradient(135deg,#1a0a12,#2d0f1e);
+  background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
   color:white;
+  font-family: 'Poppins', sans-serif;
+  overflow-x:hidden;
   text-align:center;
-  font-family: serif;
 }
 
+/* LOCK SCREEN */
 #lock {
   height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
+  align-items:center;
 }
 
-#main {
-  display:none;
+input {
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+  margin-top:10px;
 }
 
 button {
   padding:10px 20px;
-  background:#ff4d6d;
-  color:white;
+  background:linear-gradient(45deg,#ff4d6d,#ff758c);
   border:none;
-  border-radius:8px;
+  border-radius:10px;
+  color:white;
   margin-top:10px;
+  cursor:pointer;
 }
 
+/* MAIN */
+#main {
+  display:none;
+  padding:20px;
+}
+
+/* TYPO */
+.glow {
+  font-size:28px;
+  text-shadow:0 0 10px #ff4d6d,0 0 20px #ff4d6d;
+}
+
+/* TYPING */
+#typing {
+  border-right:2px solid white;
+  display:inline-block;
+  padding-right:5px;
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+/* SLIDER */
 #slider img {
-  width:300px;
-  border-radius:15px;
+  width:280px;
+  border-radius:20px;
+  transition:0.5s;
+}
+
+/* HEARTS */
+.heart {
+  position:fixed;
+  bottom:0;
+  animation:float 6s linear infinite;
+  font-size:20px;
 }
 
 @keyframes float {
@@ -46,21 +85,22 @@ button {
   100%{transform:translateY(-100vh);}
 }
 
-.heart {
-  position:fixed;
-  bottom:0;
-  animation:float 6s linear infinite;
-  font-size:20px;
+/* LETTER CARD */
+.card {
+  background:rgba(255,255,255,0.1);
+  padding:20px;
+  border-radius:20px;
+  margin-top:20px;
+  backdrop-filter:blur(10px);
 }
 </style>
-
 </head>
 
 <body>
 
 <!-- PASSWORD -->
 <div id="lock">
-  <h2>Enter Password ❤️</h2>
+  <h2 class="glow">Enter Password ❤️</h2>
   <input type="password" id="pass">
   <button onclick="openSite()">Open</button>
 </div>
@@ -68,37 +108,35 @@ button {
 <!-- MAIN -->
 <div id="main">
 
-<h1>I Love You ❤️</h1>
+<h1 class="glow">I Love You ❤️</h1>
 <h2>Bhavna (My Darling & WonderWoman 💖)</h2>
 
-<p>
-10 September 2018 se tu meri life ka sabse beautiful part hai ❤️  
-Tu meri smile, meri happiness, sab kuch hai 💕  
-</p>
+<!-- TYPING TEXT -->
+<p id="typing"></p>
 
-<!-- 🎵 MUSIC -->
+<!-- MUSIC -->
 <audio id="music" loop>
   <source src="song.mp3" type="audio/mpeg">
 </audio>
-
 <button onclick="playMusic()">🎵 Play Music</button>
 
-<!-- 📸 SLIDESHOW -->
+<!-- SLIDER -->
 <h2>Our Memories ❤️</h2>
 <div id="slider">
   <img id="slide" src="photo1.jpg">
 </div>
 
-<!-- ❤️ REASONS -->
-<h2>Why I Love You</h2>
+<!-- LOVE LETTER -->
+<div class="card">
+<h2>💌 A Letter For You</h2>
 <p>
-Tumhari smile 😍<br>
-Tumhara attitude 😎<br>
-Tum meri strength ho 💪<br>
-Tum meri Darling ho ❤️
+10 September 2018 se tu meri life ka sabse beautiful part hai ❤️  
+Tu meri smile, meri happiness, meri duniya hai 💕  
+Main hamesha tere saath rahunga 💖  
 </p>
+</div>
 
-<h1>I LOVE YOU FOREVER ❤️</h1>
+<h1 class="glow">I LOVE YOU FOREVER ❤️</h1>
 
 </div>
 
@@ -112,6 +150,7 @@ function openSite(){
     document.getElementById("main").style.display="block";
     startSlide();
     hearts();
+    typing();
   } else {
     alert("Wrong Password");
   }
@@ -122,7 +161,7 @@ function playMusic(){
   document.getElementById("music").play();
 }
 
-// SLIDESHOW
+// SLIDER
 let i=1;
 function startSlide(){
   setInterval(()=>{
@@ -132,7 +171,7 @@ function startSlide(){
   },2000);
 }
 
-// FLOATING HEARTS
+// HEARTS
 function hearts(){
   setInterval(()=>{
     let h=document.createElement("div");
@@ -141,7 +180,18 @@ function hearts(){
     h.innerHTML="❤️";
     document.body.appendChild(h);
     setTimeout(()=>h.remove(),6000);
-  },500);
+  },400);
+}
+
+// TYPING EFFECT
+let text="10 September 2018 se hamari story start hui ❤️ Aur aaj tak tu meri sabse special person hai 💖";
+let index=0;
+function typing(){
+  let t=setInterval(()=>{
+    document.getElementById("typing").innerHTML+=text[index];
+    index++;
+    if(index>=text.length) clearInterval(t);
+  },50);
 }
 
 </script>
