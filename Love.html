@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Darling ❤️</title>
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    background: black;
+    color: white;
+    text-align:center;
+}
+
+#lockScreen {
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+input {
+    padding:10px;
+    font-size:18px;
+    border:none;
+    border-radius:5px;
+}
+
+button {
+    padding:10px 20px;
+    margin-top:10px;
+    font-size:18px;
+    background:red;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+
+#main {
+    display:none;
+    padding:20px;
+}
+
+img {
+    width:250px;
+    border-radius:15px;
+    margin:10px;
+}
+
+.fade {
+    animation: fade 1s infinite alternate;
+}
+
+@keyframes fade {
+    from {opacity:0.5;}
+    to {opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="lockScreen">
+    <h1>Enter Password ❤️</h1>
+    <input type="password" id="pass">
+    <button onclick="checkPass()">Open</button>
+</div>
+
+<div id="main">
+    <h1>For My Darling Bhavna ❤️</h1>
+
+    <p>
+    Dear Bhavna (My WonderWoman ❤️),<br><br>
+    10 September 2018 se lekar aaj tak, tum meri life ka sabse beautiful part ho.  
+    Us din jab humne first time baat start ki thi, mujhe nahi pata tha ki ek din tum meri itni important ban jaogi.  
+    <br><br>
+    Tum sirf meri girlfriend nahi ho, tum meri best friend, meri happiness aur meri strength ho.  
+    Jab bhi main tumse baat karta hu, sab tension khatam ho jata hai.  
+    <br><br>
+    Darling, tumhari smile meri weakness hai 😍  
+    Aur tumhara attitude... bilkul WonderWoman jaisa powerful hai 💪❤️  
+    <br><br>
+    I love you more than anything in this world ❤️
+    </p>
+
+    <h2>Our Memories 📸</h2>
+    <div id="photos"></div>
+
+    <h2>Reasons Why I Love You ❤️</h2>
+    <p>
+    1. Tumhari smile 😍<br>
+    2. Tumhara caring nature ❤️<br>
+    3. Tumhara attitude 😎<br>
+    4. Tum mujhe samajhti ho 💕<br>
+    5. Tum meri life better banati ho ✨<br>
+    6. Tum meri strength ho 💪<br>
+    7. Tum meri best friend ho 👩‍❤️‍👨<br>
+    8. Tum meri Darling ho ❤️
+    </p>
+
+    <h1 class="fade">I LOVE YOU FOREVER ❤️</h1>
+</div>
+
+<script>
+function checkPass() {
+    var p = document.getElementById("pass").value;
+    if(p === "mydarling") {
+        document.getElementById("lockScreen").style.display="none";
+        document.getElementById("main").style.display="block";
+        loadPhotos();
+    } else {
+        alert("Wrong Password 😢");
+    }
+}
+
+function loadPhotos() {
+    let div = document.getElementById("photos");
+    for(let i=1;i<=8;i++){
+        let img = document.createElement("img");
+        img.src = "photo"+i+".jpg";
+        div.appendChild(img);
+    }
+}
+</script>
+
+</body>
+</html>
