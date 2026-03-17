@@ -1,44 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>My Darling ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Darling ❤️</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
 
 <style>
 body {
-    margin:0;
-    background:black;
-    color:white;
-    text-align:center;
-    font-family:sans-serif;
+  margin:0;
+  background: linear-gradient(135deg,#1a0a12,#2d0f1e);
+  color:white;
+  text-align:center;
+  font-family: serif;
 }
 
 #lock {
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-
-input,button {
-    padding:10px;
-    font-size:18px;
-    margin:5px;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
 #main {
-    display:none;
-}
-
-#slider img {
-    width:300px;
-    border-radius:15px;
+  display:none;
 }
 
 button {
-    background:red;
-    color:white;
-    border:none;
-    border-radius:5px;
+  padding:10px 20px;
+  background:#ff4d6d;
+  color:white;
+  border:none;
+  border-radius:8px;
+  margin-top:10px;
+}
+
+#slider img {
+  width:300px;
+  border-radius:15px;
+}
+
+@keyframes float {
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-100vh);}
+}
+
+.heart {
+  position:fixed;
+  bottom:0;
+  animation:float 6s linear infinite;
+  font-size:20px;
 }
 </style>
 
@@ -46,66 +58,90 @@ button {
 
 <body>
 
+<!-- PASSWORD -->
 <div id="lock">
-    <h2>Enter Password ❤️</h2>
-    <input type="password" id="pass">
-    <button onclick="openSite()">Open</button>
+  <h2>Enter Password ❤️</h2>
+  <input type="password" id="pass">
+  <button onclick="openSite()">Open</button>
 </div>
 
+<!-- MAIN -->
 <div id="main">
 
-<h1>My Darling Bhavna ❤️</h1>
+<h1>I Love You ❤️</h1>
+<h2>Bhavna (My Darling & WonderWoman 💖)</h2>
 
 <p>
-Dear WonderWoman ❤️<br><br>
-10 Sept 2018 se tu meri life ka best part hai...  
-Tu meri smile, meri happiness sab kuch hai 💕  
+10 September 2018 se tu meri life ka sabse beautiful part hai ❤️  
+Tu meri smile, meri happiness, sab kuch hai 💕  
 </p>
 
 <!-- 🎵 MUSIC -->
 <audio id="music" loop>
-    <source src="song.mp3" type="audio/mpeg">
+  <source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <button onclick="playMusic()">🎵 Play Music</button>
 
+<!-- 📸 SLIDESHOW -->
 <h2>Our Memories ❤️</h2>
-
 <div id="slider">
-    <img id="slide" src="photo1.jpg">
+  <img id="slide" src="photo1.jpg">
 </div>
 
-<h1>I LOVE YOU ❤️</h1>
+<!-- ❤️ REASONS -->
+<h2>Why I Love You</h2>
+<p>
+Tumhari smile 😍<br>
+Tumhara attitude 😎<br>
+Tum meri strength ho 💪<br>
+Tum meri Darling ho ❤️
+</p>
+
+<h1>I LOVE YOU FOREVER ❤️</h1>
 
 </div>
 
 <script>
 
+// PASSWORD
 function openSite(){
-    let p = document.getElementById("pass").value;
-    if(p==="mydarling"){
-        document.getElementById("lock").style.display="none";
-        document.getElementById("main").style.display="block";
-        startSlide();
-    } else {
-        alert("Wrong Password");
-    }
+  let p=document.getElementById("pass").value;
+  if(p==="mydarling"){
+    document.getElementById("lock").style.display="none";
+    document.getElementById("main").style.display="block";
+    startSlide();
+    hearts();
+  } else {
+    alert("Wrong Password");
+  }
 }
 
-// 🎵 music
+// MUSIC
 function playMusic(){
-    document.getElementById("music").play();
+  document.getElementById("music").play();
 }
 
-// 📸 slideshow
-let i = 1;
-
+// SLIDESHOW
+let i=1;
 function startSlide(){
-    setInterval(()=>{
-        i++;
-        if(i>8) i=1;
-        document.getElementById("slide").src="photo"+i+".jpg";
-    },2000);
+  setInterval(()=>{
+    i++;
+    if(i>8)i=1;
+    document.getElementById("slide").src="photo"+i+".jpg";
+  },2000);
+}
+
+// FLOATING HEARTS
+function hearts(){
+  setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.style.left=Math.random()*100+"%";
+    h.innerHTML="❤️";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+  },500);
 }
 
 </script>
