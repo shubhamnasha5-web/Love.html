@@ -3,95 +3,66 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Darling ❤️</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
+<title>My WonderWoman ❤️</title>
 
 <style>
-body {
-  margin:0;
-  background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-  color:white;
-  font-family: 'Poppins', sans-serif;
-  overflow-x:hidden;
-  text-align:center;
+body{
+margin:0;
+font-family:sans-serif;
+background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+color:white;
+text-align:center;
+overflow-x:hidden;
 }
 
-/* LOCK SCREEN */
-#lock {
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+/* LOCK */
+#lock{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 }
 
-input {
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  outline:none;
-  margin-top:10px;
+input{
+padding:10px;
+border-radius:10px;
+border:none;
 }
 
-button {
-  padding:10px 20px;
-  background:linear-gradient(45deg,#ff4d6d,#ff758c);
-  border:none;
-  border-radius:10px;
-  color:white;
-  margin-top:10px;
-  cursor:pointer;
+button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#ff4d6d;
+color:white;
+margin-top:10px;
 }
 
 /* MAIN */
-#main {
-  display:none;
-  padding:20px;
-}
+#main{display:none;padding:20px;}
 
-/* TYPO */
-.glow {
-  font-size:28px;
-  text-shadow:0 0 10px #ff4d6d,0 0 20px #ff4d6d;
-}
-
-/* TYPING */
-#typing {
-  border-right:2px solid white;
-  display:inline-block;
-  padding-right:5px;
-  white-space:nowrap;
-  overflow:hidden;
+.glow{
+font-size:28px;
+text-shadow:0 0 10px #ff4d6d;
 }
 
 /* SLIDER */
-#slider img {
-  width:280px;
-  border-radius:20px;
-  transition:0.5s;
+#slider img{
+width:260px;
+border-radius:20px;
+transition:0.5s;
 }
 
-/* HEARTS */
-.heart {
-  position:fixed;
-  bottom:0;
-  animation:float 6s linear infinite;
-  font-size:20px;
+/* HEART */
+.heart{
+position:fixed;
+bottom:0;
+animation:up 5s linear infinite;
 }
-
-@keyframes float {
-  0%{transform:translateY(0);}
-  100%{transform:translateY(-100vh);}
-}
-
-/* LETTER CARD */
-.card {
-  background:rgba(255,255,255,0.1);
-  padding:20px;
-  border-radius:20px;
-  margin-top:20px;
-  backdrop-filter:blur(10px);
+@keyframes up{
+0%{transform:translateY(0);}
+100%{transform:translateY(-100vh);}
 }
 </style>
 </head>
@@ -100,43 +71,38 @@ button {
 
 <!-- PASSWORD -->
 <div id="lock">
-  <h2 class="glow">Enter Password ❤️</h2>
-  <input type="password" id="pass">
-  <button onclick="openSite()">Open</button>
+<h2>Enter Password ❤️</h2>
+<input type="password" id="pass">
+<button onclick="openSite()">Open</button>
 </div>
 
 <!-- MAIN -->
 <div id="main">
 
-<h1 class="glow">I Love You ❤️</h1>
-<h2>Bhavna (My Darling & WonderWoman 💖)</h2>
+<h1 class="glow">Batman ❤️ WonderWoman</h1>
 
-<!-- TYPING TEXT -->
 <p id="typing"></p>
 
 <!-- MUSIC -->
 <audio id="music" loop>
-  <source src="song.mp3" type="audio/mpeg">
+<source src="song.mp3" type="audio/mpeg">
 </audio>
+
 <button onclick="playMusic()">🎵 Play Music</button>
 
-<!-- SLIDER -->
-<h2>Our Memories ❤️</h2>
+<!-- PHOTOS -->
+<h2>Our Memories 📸</h2>
 <div id="slider">
-  <img id="slide" src="photo1.jpg">
+<img id="img" src="photo1.jpg">
 </div>
 
-<!-- LOVE LETTER -->
-<div class="card">
-<h2>💌 A Letter For You</h2>
+<!-- MESSAGE -->
 <p>
-10 September 2018 se tu meri life ka sabse beautiful part hai ❤️  
-Tu meri smile, meri happiness, meri duniya hai 💕  
-Main hamesha tere saath rahunga 💖  
+10 September 2018 se tu meri life ka sabse special part hai ❤️  
+Tu meri WonderWoman hai aur main tera Batman 🖤  
 </p>
-</div>
 
-<h1 class="glow">I LOVE YOU FOREVER ❤️</h1>
+<h1>I LOVE YOU ❤️</h1>
 
 </div>
 
@@ -144,54 +110,54 @@ Main hamesha tere saath rahunga 💖
 
 // PASSWORD
 function openSite(){
-  let p=document.getElementById("pass").value;
-  if(p==="mydarling"){
-    document.getElementById("lock").style.display="none";
-    document.getElementById("main").style.display="block";
-    startSlide();
-    hearts();
-    typing();
-  } else {
-    alert("Wrong Password");
-  }
+let p=document.getElementById("pass").value;
+if(p==="mydarling"){
+document.getElementById("lock").style.display="none";
+document.getElementById("main").style.display="block";
+slide();
+hearts();
+typing();
+}else{
+alert("Wrong Password");
+}
 }
 
 // MUSIC
 function playMusic(){
-  document.getElementById("music").play();
+document.getElementById("music").play();
 }
 
-// SLIDER
+// SLIDE
 let i=1;
-function startSlide(){
-  setInterval(()=>{
-    i++;
-    if(i>8)i=1;
-    document.getElementById("slide").src="photo"+i+".jpg";
-  },2000);
+function slide(){
+setInterval(()=>{
+i++;
+if(i>8)i=1;
+document.getElementById("img").src="photo"+i+".jpg";
+},2000);
 }
 
-// HEARTS
+// HEART
 function hearts(){
-  setInterval(()=>{
-    let h=document.createElement("div");
-    h.className="heart";
-    h.style.left=Math.random()*100+"%";
-    h.innerHTML="❤️";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),6000);
-  },400);
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.style.left=Math.random()*100+"%";
+h.innerHTML="❤️";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),5000);
+},300);
 }
 
-// TYPING EFFECT
-let text="10 September 2018 se hamari story start hui ❤️ Aur aaj tak tu meri sabse special person hai 💖";
-let index=0;
+// TYPING
+let text="10 September 2018 se jab humne baat start ki thi... tab nahi pata tha tu meri life ban jayegi ❤️ Tu meri happiness hai 💕";
+let x=0;
 function typing(){
-  let t=setInterval(()=>{
-    document.getElementById("typing").innerHTML+=text[index];
-    index++;
-    if(index>=text.length) clearInterval(t);
-  },50);
+let t=setInterval(()=>{
+document.getElementById("typing").innerHTML+=text[x];
+x++;
+if(x>=text.length) clearInterval(t);
+},50);
 }
 
 </script>
